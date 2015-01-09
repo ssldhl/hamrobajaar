@@ -42,7 +42,9 @@
                                    data-easing="easeOutBack">
                                     <g:link url="javascript:void(0);" class="fsize20">
                                           <g:img dir="images" file="demo/shop/1.jpg" width="200" height="200" alt="" class="block hover-scale"/>
-                                          <strong>${item.getAt('paid')}</strong>
+                                          <strong>
+                                                <g:formatNumber number="${item.getAt('price')}" currencyCode="USD" type="currency"/>
+                                          </strong>
                                     </g:link>
                               </div>
                         </li>
