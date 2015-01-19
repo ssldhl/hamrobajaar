@@ -108,8 +108,8 @@ log4j.main = {
       warn 'grails.app'
       // Logging infos and higher for all of the app
       info 'grails.app'
-      // Logging debug and higher for the BarService
-      debug 'grails.plugin.resources'
+
+      debug 'org.springframework.security'
 
       error  'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP
@@ -143,13 +143,6 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'hamrobajaar.Us
 grails.plugin.springsecurity.authority.className = 'hamrobajaar.Role'
 grails.plugin.springsecurity.requestMap.className = 'hamrobajaar.Requestmap'
 grails.plugin.springsecurity.securityConfigType = 'Requestmap'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/assets/**':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-]
+grails.plugin.springsecurity.rejectIfNoRule  = false
+//grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.fii.rejectPublicInvocations = false
