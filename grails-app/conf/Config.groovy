@@ -104,6 +104,13 @@ log4j.main = {
       //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
       //}
 
+      // Logging warnings and higher for all of the app
+      warn 'grails.app'
+      // Logging infos and higher for all of the app
+      info 'grails.app'
+      // Logging debug and higher for the BarService
+      debug 'grails.plugin.resources'
+
       error  'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP
             'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -116,3 +123,33 @@ log4j.main = {
             'org.hibernate',
             'net.sf.ehcache.hibernate'
 }
+
+grails {
+      mail {
+            host = "smtp.gmail.com"
+            port = 465
+            username = System.getenv("GMAIL_USERNAME")
+            password = System.getenv("GMAIL_PASSWORD")
+            props = ["mail.smtp.auth":"true",
+                     "mail.smtp.socketFactory.port":"465",
+                     "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                     "mail.smtp.socketFactory.fallback":"false"]
+      }
+}
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'hamrobajaar.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'hamrobajaar.UserRole'
+grails.plugin.springsecurity.authority.className = 'hamrobajaar.Role'
+grails.plugin.springsecurity.requestMap.className = 'hamrobajaar.Requestmap'
+grails.plugin.springsecurity.securityConfigType = 'Requestmap'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll']
+]

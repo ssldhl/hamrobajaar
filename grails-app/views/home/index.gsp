@@ -19,35 +19,39 @@
 <div class="fullwidthbanner-container roundedcorners">
       <div class="fullwidthbanner">
             <ul>
-                  <g:each in="${featuredData}" var="item">
+                  <g:each in="${featuredData}" var="item" status="i">
+                        <g:if test="${i==0}">
                         <!-- SLIDE -->
-                        <li data-transition="curtain-2" data-slotamount="5" data-masterspeed="700">
+                        <li data-transition="random" data-slotamount="5" data-masterspeed="500" data-delay="3000">
 
                               <!-- COVER IMAGE -->
-                              <g:img dir="images" file="demo/revolution_slider/slider7.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" alt=""/>
+                              <g:img dir="images" file="demo/revolution_slider/sliderbg.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" alt=""/>
 
-                              <div class="tp-caption large_text sft"
-                                   data-x="center"
-                                   data-y="100"
-                                   data-speed="300"
-                                   data-start="800"
-                                   data-easing="easeOutExpo">${item.getAt('name')}
-                              </div>
-
-                              <div class="tp-caption lfb text-center"
-                                   data-x="270"
-                                   data-y="200"
-                                   data-speed="900"
-                                   data-start="1700"
-                                   data-easing="easeOutBack">
-                                    <g:link url="javascript:void(0);" class="fsize20">
-                                          <g:img dir="images" file="demo/shop/1.jpg" width="200" height="200" alt="" class="block hover-scale"/>
-                                          <strong>
-                                                <g:formatNumber number="${item.getAt('price')}" currencyCode="USD" type="currency"/>
-                                          </strong>
-                                    </g:link>
+                              <div class="tp-caption large_bold_grey lfl stl"
+                                   data-x="50"
+                                   data-y="20"
+                                   data-speed="100"
+                                   data-start="502"
+                                   data-easing="easeOutExpo" data-end="2500" data-endspeed="300" data-endeasing="easeInSine">${item.getAt('description')}
                               </div>
                         </li>
+                        </g:if>
+                        <g:else>
+                              <li data-transition="random" data-slotamount="5" data-masterspeed="500" data-delay="3000">
+
+                                    <!-- COVER IMAGE -->
+                                    <g:img dir="images" file="demo/revolution_slider/sliderbg.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" alt=""/>
+
+                                    <div class="tp-caption large_bold_grey lfl stl"
+                                         data-x="50"
+                                         data-y="20"
+                                         data-speed="100"
+                                         data-start="502"
+                                         data-easing="easeOutExpo" data-end="2500" data-endspeed="300" data-endeasing="easeInSine">${item.getAt('description')}
+                                    </div>
+                              </li>
+                              
+                        </g:else>                        
                   </g:each>
 
 
